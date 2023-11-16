@@ -1,0 +1,1 @@
+Simple Voting app giving the idea of Docker Compose
