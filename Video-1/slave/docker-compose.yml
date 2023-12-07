@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  mysql-ubuntu:
+    image: ubuntu:latest
+    container_name: slave
+    command: bash -c "apt-get update && apt-get install -y mysql-server && service mysql start && tail -f /dev/null"
+    ports:
+      - "3307:3307"
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: slaveDB
