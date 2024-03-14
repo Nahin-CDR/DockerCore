@@ -1,4 +1,4 @@
-how to see the working directory ? or currently you are in ??
+# how to see the working directory ? or currently you are in ??
 ``` write in terminal : pwd ```
-what does that mean ? 
+<br> what does that mean ? <br>
 It means => Print Working Directory
