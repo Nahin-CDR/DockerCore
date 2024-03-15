@@ -11,3 +11,8 @@ It means => Print Working Directory
 uname -a
 ```
 write this command in terminal
+
+# Remove/delete image command by force
+```
+sudo docker rmi -f image_id
+```
