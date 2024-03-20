@@ -16,3 +16,8 @@ write this command in terminal
 ```
 sudo docker rmi -f image_id
 ```
+
+# install docker from command in ubuntu terminal
+```
+sudo apt install docker.io
+```
