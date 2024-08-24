@@ -8,3 +8,5 @@ https://w3programmers.com/what-is-docker/
 
 how to stop/kill container <br>
 ``` docker rmi -f 'image id'  ```
+
+Nahin the coder
