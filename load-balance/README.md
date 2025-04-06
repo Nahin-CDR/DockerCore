@@ -5,5 +5,5 @@
 
 # Step 3
   
-  ``` docker run -d --name lb --network my-network -p 8080:80 -v $(pwd)/loadbalancer.conf:/etc/nginx/nginx.conf:ro nginx:alpine ``` 
+  ``` docker run -d --name lb --network my-network -p 8080:80 -v $(pwd)/loadbalancer.conf:/etc/nginx/nginx.conf:ro nginx:alpine ```  
 
