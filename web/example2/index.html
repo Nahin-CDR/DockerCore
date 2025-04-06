@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eid Mubarak</title>
+  <style>
+    /* Basic reset and full-height layout */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(45deg, #FFC107, #FF5722);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    /* Center content */
+    .container {
+      position: relative;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    /* Main greeting text */
+    h1 {
+      font-size: 4em;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+    p {
+      font-size: 1.5em;
+      color: white;
+      margin-top: 20px;
+    }
+    /* Sparkle animation for interactive effect */
+    @keyframes sparkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+    }
+    .sparkle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      animation: sparkle 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="greeting">Eid Mubarak!</h1>
+    <p>May this Eid bring joy and blessings to you and your family.</p>
+  </div>
+  <script>
+    // Add interactive sparkle effect on click of the greeting
+    document.getElementById('greeting').addEventListener('click', function(e) {
+      for (let i = 0; i < 10; i++) {
+        let sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = (e.clientX + Math.random() * 50 - 25) + 'px';
+        sparkle.style.top = (e.clientY + Math.random() * 50 - 25) + 'px';
+        document.body.appendChild(sparkle);
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1000);
+      }
+    });
+  </script>
+</body>
+</html>

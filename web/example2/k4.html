@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eid Mubarak</title>
+  <style>
+    /* Reset and full height with a dark night sky background */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #0a0a2a 0%, #000 100%);
+      position: relative;
+    }
+    /* Container for main content */
+    .container {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    /* Greeting text with pulse animation */
+    h1 {
+      font-size: 4em;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s;
+    }
+    h1:hover {
+      transform: scale(1.05);
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    p {
+      font-size: 1.5em;
+      color: #ddd;
+      margin-top: 20px;
+      max-width: 80%;
+    }
+    /* Sparkle effect on click */
+    @keyframes sparkle {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+    .sparkle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      animation: sparkle 1s ease-in-out forwards;
+    }
+    /* Confetti effect */
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    .confetti {
+      position: absolute;
+      width: 6px;
+      height: 12px;
+      background-color: red;
+      opacity: 0.8;
+      animation: fall 2s ease-out forwards;
+    }
+    .confetti:nth-child(3n) { background-color: yellow; }
+    .confetti:nth-child(4n) { background-color: lime; }
+    .confetti:nth-child(5n) { background-color: cyan; }
+    /* Crescent moon drifting across the screen */
+    .moon {
+      position: absolute;
+      top: 20%;
+      left: -100px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30px 30px, #fff, transparent 60%);
+      border-radius: 50%;
+      box-shadow: -10px 0 0 10px #FFC107;
+      animation: drift 20s linear infinite;
+      z-index: 5;
+    }
+    @keyframes drift {
+      0% { left: -100px; top: 20%; }
+      50% { left: calc(100% - 80px); top: 10%; }
+      100% { left: -100px; top: 20%; }
+    }
+    /* Twinkling stars in the night sky */
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      width: 2px;
+      height: 2px;
+      opacity: 0;
+      animation: twinkle 3s infinite;
+      z-index: 3;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    /* Dhumketo (smoke) effect */
+    .dhumketo {
+      position: absolute;
+      bottom: 0;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      filter: blur(15px);
+      animation: riseSmoke 8s linear forwards;
+      z-index: 2;
+      opacity: 0.4;
+    }
+    @keyframes riseSmoke {
+      0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateX(0) translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+    /* Fireworks burst effect */
+    @keyframes explode {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+    .firework {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #fff, rgba(255,255,255,0));
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+      z-index: 9;
+    }
+    /* Floating lanterns */
+    @keyframes driftLantern {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(120vh) rotate(20deg); opacity: 0; }
+    }
+    .lantern {
+      position: absolute;
+      width: 40px;
+      height: 60px;
+      background: linear-gradient(to bottom, #FFEB3B, #FFC107);
+      border-radius: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      animation: driftLantern 8s linear forwards;
+      z-index: 4;
+    }
+    /* Comet effect */
+    .comet {
+      position: absolute;
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.8));
+      border-radius: 50%;
+      transform: rotate(45deg);
+      animation: shoot 3s ease-out forwards;
+      z-index: 8;
+    }
+    @keyframes shoot {
+      0% {
+        opacity: 1;
+        transform: translate(-150px, -150px) rotate(45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(100vw, 100vh) rotate(45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Crescent moon -->
+  <div class="moon"></div>
+  
+  <!-- Generate twinkling stars -->
+  <script>
+    const numStars = 100;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+  
+  <!-- Main content container -->
+  <div class="container">
+    <h1 id="greeting">Eid Mubarak!</h1>
+    <p>May this Eid bring peace, joy, and blessings under the night sky.</p>
+  </div>
+  
+  <script>
+    // Create sparkles at the click location
+    function createSparkles(x, y) {
+      for (let i = 0; i < 10; i++) {
+        let sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = (x + Math.random() * 50 - 25) + 'px';
+        sparkle.style.top = (y + Math.random() * 50 - 25) + 'px';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+    }
+    // Create confetti effect at the click location
+    function createConfetti(x, y) {
+      for (let i = 0; i < 20; i++) {
+        let confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = x + 'px';
+        confetti.style.top = y + 'px';
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 2000);
+      }
+    }
+    // Create a fireworks burst at the click location
+    function createFireworks(x, y) {
+      for (let i = 0; i < 8; i++) {
+        let firework = document.createElement('div');
+        firework.className = 'firework';
+        let angle = Math.random() * 2 * Math.PI;
+        let offset = Math.random() * 30;
+        firework.style.left = (x + Math.cos(angle) * offset) + 'px';
+        firework.style.top = (y + Math.sin(angle) * offset) + 'px';
+        document.body.appendChild(firework);
+        setTimeout(() => firework.remove(), 1000);
+      }
+    }
+    // Create a floating lantern from a random horizontal position at the top
+    function createLantern() {
+      let lantern = document.createElement('div');
+      lantern.className = 'lantern';
+      lantern.style.left = Math.random() * 100 + '%';
+      lantern.style.top = '-80px';
+      document.body.appendChild(lantern);
+      setTimeout(() => lantern.remove(), 8000);
+    }
+    // Create dhumketo (smoke) effect from the bottom at a random horizontal position
+    function createDhumketo() {
+      let smoke = document.createElement('div');
+      smoke.className = 'dhumketo';
+      smoke.style.left = Math.random() * 100 + '%';
+      document.body.appendChild(smoke);
+      setTimeout(() => smoke.remove(), 8000);
+    }
+    // Create a comet streaking across the sky
+    function createComet() {
+      let comet = document.createElement('div');
+      comet.className = 'comet';
+      // Randomize starting position along the left edge
+      comet.style.left = Math.random() * 20 + 'vw';
+      comet.style.top = Math.random() * 20 + 'vh';
+      document.body.appendChild(comet);
+      setTimeout(() => comet.remove(), 3000);
+    }
+    
+    // Interactive event: on clicking the greeting, trigger multiple animations
+    document.getElementById('greeting').addEventListener('click', function(e) {
+      createSparkles(e.clientX, e.clientY);
+      createConfetti(e.clientX, e.clientY);
+      createFireworks(e.clientX, e.clientY);
+    });
+    
+    // Periodically release lanterns, dhumketo, and comet effects
+    setInterval(createLantern, 3000);
+    setInterval(createDhumketo, 5000);
+    setInterval(createComet, 7000);
+  </script>
+</body>
+</html>

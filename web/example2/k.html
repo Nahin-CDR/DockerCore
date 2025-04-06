@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eid Mubarak</title>
+  <style>
+    /* Basic reset and full-height layout */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(45deg, #FFC107, #FF5722);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+    /* Container for main content */
+    .container {
+      position: relative;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 2;
+    }
+    /* Main greeting text */
+    h1 {
+      font-size: 4em;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    h1:hover {
+      transform: scale(1.05);
+    }
+    p {
+      font-size: 1.5em;
+      color: white;
+      margin-top: 20px;
+    }
+    /* Sparkle animation for interactive effect */
+    @keyframes sparkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+    }
+    .sparkle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      animation: sparkle 1s ease-in-out forwards;
+    }
+    /* Confetti animation */
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    .confetti {
+      position: absolute;
+      width: 6px;
+      height: 12px;
+      background-color: red;
+      opacity: 0.8;
+      animation: fall 2s ease-out forwards;
+    }
+    /* Create a few color variations for confetti */
+    .confetti:nth-child(3n) { background-color: yellow; }
+    .confetti:nth-child(4n) { background-color: lime; }
+    .confetti:nth-child(5n) { background-color: cyan; }
+    /* Crescent moon styling and animation */
+    .moon {
+      position: absolute;
+      top: 20%;
+      left: -100px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30px 30px, #fff, transparent 60%);
+      border-radius: 50%;
+      box-shadow: -10px 0 0 10px #FFC107;
+      animation: drift 20s linear infinite;
+      z-index: 1;
+    }
+    @keyframes drift {
+      0% { left: -100px; top: 20%; }
+      50% { left: calc(100% - 80px); top: 10%; }
+      100% { left: -100px; top: 20%; }
+    }
+    /* Twinkling stars */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 3px;
+      height: 3px;
+      opacity: 0;
+      animation: twinkle 3s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Crescent moon element -->
+  <div class="moon"></div>
+  
+  <!-- Twinkling stars (static background) -->
+  <script>
+    // Generate random stars across the viewport
+    const numStars = 100;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+  
+  <div class="container">
+    <h1 id="greeting">Eid Mubarak!</h1>
+    <p>May this Eid bring joy and blessings to you and your family.</p>
+  </div>
+  
+  <script>
+    // Function to create sparkles at the click location
+    function createSparkles(x, y) {
+      for (let i = 0; i < 10; i++) {
+        let sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = (x + Math.random() * 50 - 25) + 'px';
+        sparkle.style.top = (y + Math.random() * 50 - 25) + 'px';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+    }
+    
+    // Function to create confetti effect
+    function createConfetti(x, y) {
+      for (let i = 0; i < 20; i++) {
+        let confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = x + 'px';
+        confetti.style.top = y + 'px';
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.backgroundColor = ['red','yellow','lime','cyan'][Math.floor(Math.random() * 4)];
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 2000);
+      }
+    }
+    
+    // Interactive event: on clicking the greeting, trigger animations
+    document.getElementById('greeting').addEventListener('click', function(e) {
+      createSparkles(e.clientX, e.clientY);
+      createConfetti(e.clientX, e.clientY);
+    });
+  </script>
+</body>
+</html>
