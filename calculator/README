@@ -1,0 +1,28 @@
+
+---
+
+## ⚙️ Main Functionalities
+
+| Component | Technology        | Description                                 |
+|-----------|-------------------|---------------------------------------------|
+| Frontend  | HTML + Nginx       | UI and JS to take inputs and call API       |
+| Backend   | Node.js + Express | Handles `/api/calculate` and does math      |
+| Proxy     | Nginx              | Proxies frontend requests to backend safely |
+| Network   | Docker Compose     | Runs services in an isolated shared network |
+
+---
+
+## 🛠️ Setup & Run Instructions
+
+### ✅ Prerequisites
+- [Docker](https://www.docker.com/products/docker-desktop/) & Docker Compose installed
+
+---
+
+### 🧪 Step-by-Step to Run
+
+1. **Clone the project** or copy all files into a folder.
+
+2. **Navigate to the project folder**:
+   ```bash
+   cd docker-calculator
