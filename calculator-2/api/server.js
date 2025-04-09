@@ -14,6 +14,9 @@ const pool = new Pool({
 
 // Middleware to parse JSON
 app.use(express.json());
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Hello from API!' });
+});
 
 // Retry connection to DB
 async function connectWithRetry() {
