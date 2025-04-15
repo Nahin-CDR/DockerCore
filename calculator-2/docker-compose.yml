@@ -11,7 +11,7 @@ services:
       - DB_HOST=db
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASS=password
+      - DB_PASS=SuperStrongPassword123!
       - DB_NAME=calculator
     networks:
       - mynetwork
@@ -30,7 +30,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: SuperStrongPassword123!
       POSTGRES_DB: calculator
     volumes:
       - pgdata:/var/lib/postgresql/data
