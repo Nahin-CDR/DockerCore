@@ -17,3 +17,10 @@ psql -U postgres -d calculator
 SELECT * FROM calculations;  -- view saved calculations
 \q                           -- quit PostgreSQL prompt
 ```
+
+# View the Privacy Policy of your DB
+-> at first enter into your DB container
+then run this command
+```bash
+nano /var/lib/postgresql/data/pg_hba.conf
+``` 
