@@ -1,5 +1,13 @@
-how to enter into DB : 
+# how to enter into DB : 
 -> type this command 
-``` docker exec -it db_name bash ```
+
+```bash 
+sudo docker exec -it calculator_db_1 bash
+
+```
+docker exec -it db_name bash 
 -> then type this command to view DB
-``` psql -U postgres -d dbname ```
+
+```bash
+psql -U postgres -d calculator 
+```
