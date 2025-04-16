@@ -19,6 +19,16 @@ services:
     networks:
       - app-network
 
+  frontend:
+    image: nginx:alpine
+    container_name: frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    expose:
+      - 80
+    networks:
+      - app-network
+
   nginx-proxy:
     image: nginx:latest
     container_name: nginx-proxy
@@ -26,13 +36,16 @@ services:
       - "8080:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./frontend:/usr/share/nginx/html:ro  # Serve static HTML from here
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf         # ← ADD THIS LINE
+      - ./frontend:/usr/share/nginx/html:ro
     depends_on:
       - auth-service
       - user-service
       - order-service
+      - frontend
     networks:
       - app-network
+
 
 networks:
   app-network:
